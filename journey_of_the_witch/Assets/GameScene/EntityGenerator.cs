@@ -20,12 +20,14 @@ public class EntityGenerator : MonoBehaviour {
 	}
 
 	public IEntityBase GenerateEntity(int id, Vector3 pos){
-		//プレイヤー
+		//プレイヤーのインスタンスを作成
 		if (id == 0) {
 			GameObject e = Instantiate (player) as GameObject;
+			e.name = "entityPlayerPrefab";
 			e.transform.position = pos;
 			return e.GetComponent<IEntityBase> ();
 		}
+		//箱のインスタンスを作成
 		if (id == 1) {
 			GameObject e = Instantiate (block) as GameObject;
 			e.transform.position = pos;

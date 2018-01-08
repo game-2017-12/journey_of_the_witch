@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityPlayer : IEntityBase {
 
@@ -18,7 +19,6 @@ public class EntityPlayer : IEntityBase {
 
 	override public void Initialize(){
 		this.m_Rigid2D = GetComponent<Rigidbody2D> ();
-		Debug.Log (m_Rigid2D);
 	}
 	override public void PressLeftKey(){
 		m_Vector = -1;
@@ -29,7 +29,7 @@ public class EntityPlayer : IEntityBase {
 	override public void PressUpKey(){
 		//箱に変身
 		var e = GameObject.Find ("entityGenerator").GetComponent<EntityGenerator> ().GenerateEntity (1, this.GetPosition ());
-		GameObject.Find ("entityGenerator").GetComponent<EntityController> ().SetEntity (e);
+		GameObject.Find ("entityController").GetComponent<EntityController> ().SetEntity (e);
 
 	}
 	override public void PressDownKey(){
@@ -44,6 +44,11 @@ public class EntityPlayer : IEntityBase {
 		//向きによって画像を反転
 		if(m_Vector != 0){
 			transform.localScale = new Vector3 (m_Vector * 0.3f, 0.3f, 0.3f);
+		}
+	}
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.name == "goal") {
+			SceneManager.LoadScene ("ResultScene");
 		}
 	}
 }

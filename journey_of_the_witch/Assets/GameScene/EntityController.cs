@@ -8,7 +8,6 @@ public class EntityController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log (m_Entity);
 		if (m_Entity != null) {
 			m_Entity.Initialize ();
 		}
@@ -24,7 +23,7 @@ public class EntityController : MonoBehaviour {
 			m_Entity.PressLeftKey ();
 		}
 		//変身
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			m_Entity.PressUpKey ();
 		}
 	}
@@ -38,5 +37,6 @@ public class EntityController : MonoBehaviour {
 
 		m_Entity = e;
 		m_Entity.Initialize ();
+		Debug.Log (m_Entity);
 	}
 }

@@ -8,12 +8,15 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.player = GameObject.Find ("entityplayerPrefab");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 playerPos = this.player.transform.position;
-		transform.position = new Vector3 (playerPos.x, transform.position.y, transform.position.z);
+		player = GameObject.Find ("entityPlayerPrefab");
+
+		if (player != null) {
+			Vector3 playerPos = this.player.transform.position;
+			transform.position = new Vector3 (playerPos.x, transform.position.y, transform.position.z);
+		}
 	}
 }
