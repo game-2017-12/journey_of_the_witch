@@ -13,7 +13,6 @@ public class TitleDirector : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown ("z")) {
-			Debug.Log ("ok");
 			SceneManager.LoadScene ("StageSelectScene");
 		}
 	}
