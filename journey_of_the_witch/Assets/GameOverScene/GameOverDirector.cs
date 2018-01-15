@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EnemySai : IEntityBase {
-
-	public float speed = 0.01f;
+public class GameOverDirector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
 		
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
-		transform.position = new Vector3(speed + transform.position.x, transform.position.y, transform.position.z);
+		if (Input.GetKeyDown ("z")) {
+			SceneManager.LoadScene ("StageSelectScene");
+		}
 	}
 }

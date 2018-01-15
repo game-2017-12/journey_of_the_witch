@@ -7,6 +7,7 @@ public class IEntityBase : MonoBehaviour {
 	protected Rigidbody2D m_Rigid2D;
 	protected float m_WalkForce = 30.0f;
 	protected float m_MaxWalkSpeed = 2.0f;
+	protected float m_jumpForce = 320.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +35,8 @@ public class IEntityBase : MonoBehaviour {
 	}
 	virtual public void PressDownKey(){
 	}
-
+	virtual public void PressCKey(){
+	}
 	public Vector3 GetPosition(){
 		return this.transform.position;
 	}

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGiraffe : MonoBehaviour {
+public class EnemyGiraffe : IEntityBase {
 
 	private int m_Vector = 1;
-	public float speedx = 0.3f;
+	private float speedx = -0.05f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +14,10 @@ public class EnemyGiraffe : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Movement ();
+	}
+
+	private void Movement(){
 		transform.position = new Vector3 (m_Vector * speedx + transform.position.x, transform.position.y, transform.position.z);
 		transform.localScale = new Vector3 (m_Vector * 0.9f, 0.9f, 0.9f);
 	}
