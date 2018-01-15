@@ -35,6 +35,12 @@ public class EntityPlayer : IEntityBase {
 	override public void PressDownKey(){
 	}
 
+	override public void PressCKey(){
+		if (m_Rigid2D.velocity.y == 0) {
+			this.m_Rigid2D.AddForce (transform.up * this.m_jumpForce);
+		}
+	}
+
 	private void Movement(){
 		float speedx = Mathf.Abs (this.m_Rigid2D.velocity.x);
 
@@ -49,6 +55,11 @@ public class EntityPlayer : IEntityBase {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.name == "goal") {
 			SceneManager.LoadScene ("ResultScene");
+		}
+	}
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Enemy") {
+			SceneManager.LoadScene ("GameOverScene");
 		}
 	}
 }

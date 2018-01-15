@@ -26,7 +26,12 @@ public class EntityController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			m_Entity.PressUpKey ();
 		}
+		//ジャンプ
+		if (Input.GetKeyDown ("c")) {
+			m_Entity.PressCKey ();
+		}
 	}
+
 
 	public void SetEntity(IEntityBase e){
 		//オブジェクトを削除
